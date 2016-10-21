@@ -1906,7 +1906,11 @@ public class Humbug extends JavaPlugin implements Listener {
     if (!(vehicle instanceof Horse)) {
       return;
     }
-    Versioned.setHorseSpeed((Entity)vehicle, config_.get("horse_speed").getDouble());
+
+    double horseSpeed = config_.get("horse_speed").getDouble();
+    if (horseSpeed < 0.0001) return;
+
+    Versioned.setHorseSpeed((Entity)vehicle, horseSpeed);
   }
 
   // ================================================
